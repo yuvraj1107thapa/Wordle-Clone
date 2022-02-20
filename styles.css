@@ -13,6 +13,8 @@ body {
     font-size: clamp(.5rem, 2.5vmin, 1.5rem);
 }
 
+/* Style for keyboard */
+
 .keyboard {
     display: grid;
     grid-template-columns: repeat(20, minmax(auto, 1.25em));
@@ -54,5 +56,47 @@ body {
 .correct {
     border: none;
     border-radius: 2px;
+    background-color: #6aaa64;
+}
+
+/* Style for guess-grid */
+
+.guess-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    flex-grow: 1;
+    grid-template-columns: repeat(5, 4em);
+    grid-template-rows: repeat(6, 4em);
+    gap: .25em;
+    margin-bottom: 1em;
+}
+
+.tile {
+    font-size: 2em;
+    border: .05em solid #d3d6da;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.tile[data-state="active"] {
+    border-color: ;
+}
+
+.tile[data-state="absent"] {
+    border: none;
+    background-color: #787c7e;
+}
+
+.tile[data-state="present"] {
+    border: none;
+    background-color: #c9b458;
+}
+
+.tile[data-state="correct"] {
+    border: none;
     background-color: #6aaa64;
 }
