@@ -3,16 +3,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Wordle Clone</title>
     <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js" defer></script>
 </head>
 <body>
     <div class="guess-grid">
-        <div class="tile" data-state="active">R</div>
-        <div class="tile" data-state="absent">A</div>
-        <div class="tile" data-state="present">J</div>
-        <div class="tile" data-state="correct">A</div>
-        <div class="tile">N</div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
         <div class="tile"></div>
         <div class="tile"></div>
         <div class="tile"></div>
@@ -51,25 +52,25 @@
         <button class="key" data-key="O">O</button>
         <button class="key" data-key="P">P</button>
         <div class="space"></div>
-            <button class="key">A</button>
-            <button class="key">S</button>
-            <button class="key">D</button>
-            <button class="key">F</button>
-            <button class="key">G</button>
-            <button class="key">H</button>
-            <button class="key">J</button>
-            <button class="key">K</button>
-            <button class="key">L</button>
+            <button class="key" data-key="A">A</button>
+            <button class="key" data-key="S">S</button>
+            <button class="key" data-key="D">D</button>
+            <button class="key" data-key="F">F</button>
+            <button class="key" data-key="G">G</button>
+            <button class="key" data-key="H">H</button>
+            <button class="key" data-key="J">J</button>
+            <button class="key" data-key="K">K</button>
+            <button class="key" data-key="L">L</button>
         <div class="space"></div>
-        <button class="large-btn key">Enter</button>
-        <button class="key">Z</button>
-        <button class="key">X</button>
-        <button class="key">C</button>
-        <button class="key">V</button>
-        <button class="key absent">B</button>
-        <button class="key correct">N</button>
-        <button class="key present">M</button>
-        <button class="large-btn key">Delete</button>
+        <button class="key large-btn" data-enter>Enter</button>
+        <button class="key" data-key="Z">Z</button>
+        <button class="key" data-key="X">X</button>
+        <button class="key" data-key="C">C</button>
+        <button class="key" data-key="V">V</button>
+        <button class="key" data-key="B">B</button>
+        <button class="key" data-key="N">N</button>
+        <button class="key" data-key="M">M</button>
+        <button class="key large-btn" data-delete>Delete</button>
     </div>
 </body>
 </html>
