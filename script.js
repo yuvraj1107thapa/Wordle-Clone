@@ -15290,6 +15290,8 @@ const dictionary = [
 ]
 
 const WORD_LENGTH = 5;
+const FLIP_ANIMATION_DURATION = 500
+const keyboard = document.querySelector("[data-keyboard]");
 const alertContainer = document.querySelector("[data-alert-container]");
 const guessGrid = document.querySelector("[data-guess-grid]");
 const targetWord = 
@@ -15362,6 +15364,29 @@ function submitGuess() {
         shakeTiles(activeTiles);
         return;
     }
+    const guess = activeTiles.reduce((word, tile) => {
+        return word + tile.dataset.letter;
+    }, "");
+    if(!dictionary.includes(guess)) {
+        showAlert("Not in word list");
+        shakeTiles(activeTiles);
+        return;
+    }
+    
+    stopInteraction();
+    activeTiles.forEach((...params) => flipTiles(...params, guess))
+}
+
+function flipTiles(tile, index, array, guess) {
+    const letter = tile.dataset.letter;
+    const key = keyboard.querySelector(`[data-key=${letter}]`);
+    setTimeout(() => {
+        tile.classList.add("flip")
+    }, index * FLIP_ANIMATION_DURATION / 2);
+
+    tile.addEventListener("transitionend", () => {
+        tile.classList.remove("flip")
+    })
 }
 
 function getActiveTiles() {
@@ -15376,6 +15401,15 @@ function showAlert(message, duration = 1000) {
     if(duration == null) return;
     setTimeout(() => {
         alert.classList.add("hide");
-        alert.addEventListener("transitionend", () => alert.remove);
+        alert.addEventListener("transitionend", () => alert.remove());
     }, duration);
+}
+
+function shakeTiles(tiles) {
+    tiles.forEach(tile => {
+        tile.classList.add("shake");
+        tile.addEventListener("animationend", () => {
+            tile.classList.remove("shake");
+        }, { once: true })
+    })
 }
