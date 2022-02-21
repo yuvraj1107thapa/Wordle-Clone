@@ -15291,13 +15291,16 @@ const dictionary = [
 
 const WORD_LENGTH = 5;
 const FLIP_ANIMATION_DURATION = 500;
+const DANCE_ANIMATION_DURATION = 500;
 const keyboard = document.querySelector("[data-keyboard]");
 const alertContainer = document.querySelector("[data-alert-container]");
 const guessGrid = document.querySelector("[data-guess-grid]");
 const offsetFromDate = new Date(2022, 0, 1);
-const msOffset = Date.now() - offsetFromDate
+const msOffset = Date.now() - offsetFromDate;
 const dayOffset = msOffset / 1000 / 60 / 60 / 24;
-const targetWord = targetWords[Math.floor(dayOffset)]
+const targetWord = targetWords[Math.floor(dayOffset)];
+
+console.log(targetWord);
 
 startInteraction();
 
@@ -15431,5 +15434,31 @@ function shakeTiles(tiles) {
         tile.addEventListener("animationend", () => {
             tile.classList.remove("shake");
         }, { once: true })
+    })
+}
+
+function checkWinLose(guess, tiles) {
+    if(guess === targetWord) {
+        showAlert("You Win", 5000);
+        danceTiles(tiles);
+        stopInteraction();
+        return;
+    };
+
+    const remainingTiles = guessGrid.querySelectorAll(":not([data-letter])");
+    if(remainingTiles.length === 0) {
+        showAlert(targetWord.toUpperCase(), null);
+        stopInteraction();
+    }
+}
+
+function danceTiles(tiles) {
+    tiles.forEach((tile, index) => {
+        setTimeout(() => {
+            tile.classList.add("dance");
+            tile.addEventListener("animationend", () => {
+                tile.classList.remove("dance");
+            }, { once: true })
+        }, (index * DANCE_ANIMATION_DURATION) / 5)
     })
 }
