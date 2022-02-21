@@ -75,6 +75,7 @@ body {
 .tile {
     font-size: 2em;
     border: .05em solid #d3d6da;
+    text-transform: uppercase;
     font-weight: bold;
     display: flex;
     justify-content: center;
