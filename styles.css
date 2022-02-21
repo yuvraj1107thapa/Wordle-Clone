@@ -101,3 +101,35 @@ body {
     border: none;
     background-color: #6aaa64;
 }
+
+/* Styles for alert message */
+
+.alert-container {
+    position: fixed;
+    top: 10vh;
+    left: 50vw;
+    transform: translate(-50%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alert {
+    pointer-events: none;
+    background-color: black;
+    color: white;
+    padding: .75em;
+    border-radius: .25em;
+    opacity: 1;
+    transition: opacity 500ms ease-in-out;
+    margin-bottom: .5em;
+}
+
+.alert:last-child {
+    margin-bottom: 0;
+}
+
+.alert.hide {
+    opacity: 0;
+}
